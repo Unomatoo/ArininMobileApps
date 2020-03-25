@@ -1,0 +1,2 @@
+rootProject.name='LR01_Converter'
+include ':app'
