@@ -1,6 +1,7 @@
 
 package com.example.photogallery.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -12,6 +13,7 @@ import java.util.Objects;
 public class Photo {
 
     @PrimaryKey
+    @NonNull
     private String id;
     private String owner;
     private String secret;
@@ -21,7 +23,7 @@ public class Photo {
     private Integer ispublic;
     private Integer isfriend;
     private Integer isfamily;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    //private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization
@@ -116,13 +118,13 @@ public class Photo {
         this.isfamily = isfamily;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
+    /*public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -137,12 +139,12 @@ public class Photo {
                 title.equals(photo.title) &&
                 Objects.equals(ispublic, photo.ispublic) &&
                 Objects.equals(isfriend, photo.isfriend) &&
-                Objects.equals(isfamily, photo.isfamily) &&
-                Objects.equals(additionalProperties, photo.additionalProperties);
+                Objects.equals(isfamily, photo.isfamily);
+                //Objects.equals(additionalProperties, photo.additionalProperties);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, owner, secret, server, farm, title, ispublic, isfriend, isfamily, additionalProperties);
+        return Objects.hash(id, owner, secret, server, farm, title, ispublic, isfriend, isfamily);
     }
 }

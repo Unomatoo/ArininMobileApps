@@ -1,4 +1,5 @@
 package com.example.photogallery;
+import com.example.photogallery.db.PhotosDB;
 import com.squareup.picasso.Picasso;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +24,7 @@ class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> {
     public PhotoAdapter(Context context, List<Photo> photoItems) {
         this.context = context;
         mPhotoItems = photoItems;
+
     }
 
     @Override
@@ -67,9 +70,9 @@ class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> {
             int itemPos = vh.itemPos;
             Photo item = mPhotoItems.get(itemPos);
             Context context = view.getContext();
-            //Intent intent = new Intent(context, DetailActivity.class);
-            //intent.putExtra(ARG_ITEM_ID, item.id);
-            //context.startActivity(intent);
+            PhotosDB db = PhotosDB.getDatabase(context);
+            db.photoDao().insertPhoto(item);
+            Toast.makeText(context, R.string.photo_added_text, Toast.LENGTH_SHORT).show();
         }
     };
 }

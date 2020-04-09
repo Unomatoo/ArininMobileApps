@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PhotoGallery</string>
+    <string name="favorites_text">Избранное</string>
+    <string name="photo_added_text">Фото добавлено</string>
+    <string name="favorites_loaded_text">Избранное загружено</string>
+    <string name="favorites_closed_text">Избранное закрылось</string>
 </resources>
